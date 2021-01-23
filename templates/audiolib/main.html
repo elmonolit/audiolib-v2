@@ -1,0 +1,61 @@
+{% extends 'audiolib/base.html' %}
+{% load static %}
+{% block title%}
+    Audiolib
+{% endblock %}
+{% block content %}
+<ul class="nav nav-list flex-column">
+    <li class="nav-item">Type</li>
+        <form>
+            <li class="nav-item"><input class="search-query form-control" type="text"
+            name="search" value="" id="search" />
+            </li>
+        </form>
+</ul>
+<hr>
+<div id="bands_search">
+</div>
+<div class="container">
+    <h3>Артисты</h3>
+    <div class="row">
+        <div class="col-lg-8 col-md-7 col-sm-6">
+        <ul>
+            {% for artist in artist_list %}
+                {% if artist.nickname %}
+                    <li><a href="{{ artist.get_absolute_url }}">{{ artist.nickname }}</a><br>
+                        <img src="{{ artist.photo.url }}" height="100">
+                    </li>
+                {% else %}
+                    <li><a href="{{ artist.get_absolute_url }}">{{ artist.first_name }} {{ artist.surname }}</a><br>
+                        <img src="{{ artist.photo.url }}" height="100">
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h3>Группы</h3>
+    <div class="row">
+        <ul>
+       {% for band in band_list %}
+           <li><a href="{{ band.get_absolute_url }}">{{ band.name }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <h3>Жанры</h3>
+    <div class="row">
+        <ul>
+       {% for genre in genre_list %}
+           <li><a href="{{ genre.get_absolute_url }}">{{ genre.name }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+<img src="{% static "download.jpg"%}">
+{% endblock %}
+</body>
+</html>

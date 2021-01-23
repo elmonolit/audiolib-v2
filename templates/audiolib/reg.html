@@ -1,0 +1,14 @@
+{% extends 'audiolib/base.html' %}
+{% block content %}
+    {% if registrated %}
+    thank you for registration
+    {% else %}
+    <form id="user_form" method="post" action="{% url 'registration' %}"
+          enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    <input type="submit" name="submit" value="Regist" />
+
+    </form>
+    {% endif %}
+{% endblock %}

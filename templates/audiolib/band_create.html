@@ -1,0 +1,12 @@
+{% extends 'audiolib/base.html' %}
+{% block title %}
+{% endblock %}
+{% block content %}
+    <form method="post" enctype="multipart/form-data" action="{% url 'band_create' %}">
+    {% csrf_token %}
+    {% for field in form %}
+        {{ field }}<br>
+    {% endfor %}
+    <button type="submit" value="Create">Create</button>
+    </form>
+{% endblock %}

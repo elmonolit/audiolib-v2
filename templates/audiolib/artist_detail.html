@@ -1,0 +1,39 @@
+{% extends 'audiolib/base.html' %}
+{% load static %}
+{% block title %}
+        {% if artist.nickname %}
+            {{ artist.nickname }}
+        {% else %}
+            {{ artist.first_name }} {{ artist.second_name }} {{ artist.surname }}
+        {% endif %}
+{% endblock %}
+</head>
+<body>
+{% block content %}
+    <div class="card mb-3">
+  <h3 class="card-header">{{ artist }}</h3>
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+  </div>
+  <img style="height: 40%; width: 40%; display: block;" src="{{ artist.photo.url }}" alt="Card image">
+  <div class="card-body">
+    <p class="card-text">{{ artist.bio }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+      {% for b in artist.band.all %}
+
+    <li class="list-group-item">
+       <a href="{{ b.get_absolute_url }}">{{ b.name }}</a>
+    </li>
+      {% endfor %}
+  </ul>
+  <div class="card-footer text-muted">
+    2 days ago
+  </div>
+</div>
+{% endblock %}
+
+
+</body>
+</html>

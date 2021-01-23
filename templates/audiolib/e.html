@@ -1,0 +1,7 @@
+ {% if band_list %}
+        {% for band in band_list %}
+            <a href="{{ band.get_absolute_url }}">{{ band }}</a><br>
+        {% endfor %}
+    {% else %}
+        No Bands
+    {% endif %}

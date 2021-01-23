@@ -1,0 +1,14 @@
+{% extends 'audiolib/base.html' %}
+{% block title %}{{ genre.name }}{% endblock %}
+{% block content %}
+{{ genre.name }}
+    {{ genre.description }}<br>
+    <h3>Исполнители:</h3>
+    {% for artist in genre.artists.all %}
+        <a href="{{ artist.get_absolute_url }}">{{ artist }}</a><br>
+    {% endfor %}
+    <h3>Группы:</h3>
+    {% for band in genre.bands.all %}<br>
+        <a href="{{ band.get_absolute_url }}">{{ band }}</a><br>
+    {% endfor %}
+{% endblock %}
